@@ -999,21 +999,7 @@
     <Content Include="Scripts\tinymce\skins\lightgray\img\loader.gif" />
     <Content Include="Scripts\tinymce\skins\lightgray\img\object.gif" />
     <Content Include="Scripts\tinymce\skins\lightgray\img\trans.gif" />
-    <Content Include="Scripts\tinymce\skins\lightgray\skin.ie7.min.css" />
     <Content Include="Scripts\tinymce\skins\lightgray\skin.min.css" />
-    <Content Include="Scripts\tinymce\themes\inlite\config\bolt\atomic.js" />
-    <Content Include="Scripts\tinymce\themes\inlite\config\bolt\bootstrap-atomic.js" />
-    <Content Include="Scripts\tinymce\themes\inlite\config\bolt\bootstrap-browser.js" />
-    <Content Include="Scripts\tinymce\themes\inlite\config\bolt\bootstrap-demo.js" />
-    <Content Include="Scripts\tinymce\themes\inlite\config\bolt\bootstrap-prod.js" />
-    <Content Include="Scripts\tinymce\themes\inlite\config\bolt\browser.js" />
-    <Content Include="Scripts\tinymce\themes\inlite\config\bolt\demo.js" />
-    <Content Include="Scripts\tinymce\themes\inlite\config\bolt\prod.js" />
-    <Content Include="Scripts\tinymce\themes\inlite\config\dent\depend.js" />
-    <Content Include="Scripts\tinymce\themes\inlite\scratch\compile\bootstrap.js" />
-    <Content Include="Scripts\tinymce\themes\inlite\scratch\compile\theme.js" />
-    <Content Include="Scripts\tinymce\themes\inlite\scratch\inline\theme.js" />
-    <Content Include="Scripts\tinymce\themes\inlite\scratch\inline\theme.raw.js" />
     <Content Include="Scripts\tinymce\themes\inlite\theme.js" />
     <Content Include="Scripts\tinymce\themes\inlite\theme.min.js" />
     <Content Include="Scripts\tinymce\themes\modern\theme.js" />
@@ -1083,13 +1069,10 @@
     <Content Include="Themes\Metro\Content\Styles\Theme.css.map" />
     <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce.woff" />
     <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce.ttf" />
-    <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce.json" />
     <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce.eot" />
     <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce-small.woff" />
     <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce-small.ttf" />
-    <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce-small.json" />
     <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce-small.eot" />
-    <Content Include="Scripts\tinymce\skins\lightgray\fonts\readme.md" />
     <Content Include="Scripts\tinymce\langs\readme.md" />
     <None Include="_bin_deployableAssemblies\x86\sqlcese40.dll" />
     <None Include="_bin_deployableAssemblies\x86\sqlceqp40.dll" />
@@ -1280,7 +1263,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\languagepacks\" />
-    <Folder Include="Scripts\tinymce\themes\inlite\src\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">
