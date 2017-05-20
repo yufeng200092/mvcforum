@@ -837,6 +837,10 @@
     <Content Include="Scripts\cache\Cache.txt" />
     <Content Include="Content\bootstrap\css\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap\css\bootstrap.min.css.map" />
+    <None Include="compilerconfig.json" />
+    <None Include="compilerconfig.json.defaults">
+      <DependentUpon>compilerconfig.json</DependentUpon>
+    </None>
     <None Include="Scripts\jquery-3.1.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.1.0.js" />
     <Content Include="Scripts\jquery-3.1.0.min.js" />
@@ -1006,6 +1010,9 @@
     <Content Include="Scripts\tinymce\themes\modern\theme.min.js" />
     <Content Include="Scripts\tinymce\tinymce.js" />
     <Content Include="Scripts\tinymce\tinymce.min.js" />
+    <Content Include="Themes\Metro\Content\Styles\Theme.css">
+      <DependentUpon>Theme.scss</DependentUpon>
+    </Content>
     <Content Include="Themes\Metro\Content\Styles\Theme.min.css" />
     <Content Include="Views\Moderate\Index.cshtml" />
     <Content Include="Views\Moderate\GetMoreTopics.cshtml" />

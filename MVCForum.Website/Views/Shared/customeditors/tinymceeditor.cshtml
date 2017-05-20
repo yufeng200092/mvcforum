@@ -8,14 +8,15 @@
             browser_spellcheck: true,
             plugins: [
                 "autosave link image lists hr anchor forumimageinsert",
-                "wordcount visualblocks visualchars code fullscreen media nonbreaking"
+                "wordcount visualblocks visualchars code fullscreen media nonbreaking",
+                "textcolor colorpicker codesample"
             ],
-            toolbar1: "bold italic underline strikethrough bullist hr | link unlink @(ViewBag.ImageUploadType ?? "image") code blockquote | formatselect",
+            toolbar1: "bold italic underline strikethrough bullist hr | link unlink @(ViewBag.ImageUploadType ?? "image") code blockquote | codesample | forecolor backcolor | formatselect",
             remove_linebreaks: false,
             relative_urls: false,
             menubar: false,
             toolbar_items_size: 'small',
-            content_css: app_base + "content/tinymce.css",
+
             height: 175,
             nonbreaking_force_tab: true,
             language: 'zh_CN'
