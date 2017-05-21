@@ -37,8 +37,8 @@
         private readonly ICategoryService _categoryService;
 
         public MembersController(ILoggingService loggingService, IUnitOfWorkManager unitOfWorkManager, IMembershipService membershipService, ILocalizationService localizationService,
-            IRoleService roleService, ISettingsService settingsService, IPostService postService, IReportService reportService, 
-            IEmailService emailService, IPrivateMessageService privateMessageService, IBannedEmailService bannedEmailService, 
+            IRoleService roleService, ISettingsService settingsService, IPostService postService, IReportService reportService,
+            IEmailService emailService, IPrivateMessageService privateMessageService, IBannedEmailService bannedEmailService,
             IBannedWordService bannedWordService, ICategoryService categoryService, ITopicService topicService, ICacheService cacheService)
             : base(loggingService, unitOfWorkManager, membershipService, localizationService, roleService, settingsService, cacheService)
         {
@@ -342,7 +342,7 @@
                 return MemberRegisterLogic(userModel);
             }
 
-            
+
 
             ModelState.AddModelError(string.Empty, LocalizationService.GetResourceString("Errors.GenericMessage"));
             return View("Register");
@@ -363,8 +363,10 @@
                     Email = userModel.Email,
                     Password = userModel.Password,
                     IsApproved = userModel.IsApproved,
-                    Comment = userModel.Comment,
+                    Comment = userModel.Comment
                 };
+
+                userToSave.Nickname = userToSave.UserName;
 
                 var createStatus = MembershipService.CreateUser(userToSave);
                 if (createStatus != MembershipCreateStatus.Success)
@@ -686,7 +688,7 @@
                             UserName = model.UserName,
                             Password = model.Password,
                             RememberMe = model.RememberMe,
-                            ReturnUrl = model.ReturnUrl, 
+                            ReturnUrl = model.ReturnUrl,
                             UnitOfWork = unitOfWork
                         };
                         EventManager.Instance.FireBeforeLogin(this, e);
@@ -856,6 +858,7 @@
             {
                 Id = user.Id,
                 UserName = user.UserName,
+                Nickname = user.Nickname,
                 Email = user.Email,
                 Signature = user.Signature,
                 Age = user.Age,
@@ -915,7 +918,8 @@
                     // Check the fields for bad words
                     foreach (var stopWord in stopWords)
                     {
-                        if ((userModel.Facebook != null && userModel.Facebook.IndexOf(stopWord.Word, StringComparison.CurrentCultureIgnoreCase) >= 0) ||
+                        if ((userModel.Nickname != null && userModel.Nickname.IndexOf(stopWord.Word, StringComparison.CurrentCultureIgnoreCase) >= 0) ||
+                            (userModel.Facebook != null && userModel.Facebook.IndexOf(stopWord.Word, StringComparison.CurrentCultureIgnoreCase) >= 0) ||
                             (userModel.Location != null && userModel.Location.IndexOf(stopWord.Word, StringComparison.CurrentCultureIgnoreCase) >= 0) ||
                             (userModel.Signature != null && userModel.Signature.IndexOf(stopWord.Word, StringComparison.CurrentCultureIgnoreCase) >= 0) ||
                             (userModel.Twitter != null && userModel.Twitter.IndexOf(stopWord.Word, StringComparison.CurrentCultureIgnoreCase) >= 0) ||
@@ -973,6 +977,7 @@
                     userModel.Avatar = user.Avatar;
 
                     // Update other users properties
+                    user.Nickname = _bannedWordService.SanitiseBannedWords(userModel.Nickname, bannedWords);
                     user.Age = userModel.Age;
                     user.Facebook = _bannedWordService.SanitiseBannedWords(userModel.Facebook, bannedWords);
                     user.Location = _bannedWordService.SanitiseBannedWords(userModel.Location, bannedWords);
@@ -1075,7 +1080,7 @@
         public PartialViewResult SideAdminPanel(bool isDropDown)
         {
             var privateMessageCount = 0;
-            var moderateCount = 0;    
+            var moderateCount = 0;
             var settings = SettingsService.GetSettings();
             if (LoggedOnReadOnlyUser != null)
             {
@@ -1095,7 +1100,7 @@
                 ModerateCount = moderateCount,
                 IsDropDown = isDropDown
             };
-            
+
             return PartialView(viewModel);
         }
 
@@ -1154,11 +1159,11 @@
                 {
                     var user = MembershipService.GetUser(viewModel.Id);
                     var report = new Report
-                                     {
-                                         Reason = viewModel.Reason,
-                                         ReportedMember = user,
-                                         Reporter = LoggedOnReadOnlyUser
-                                     };
+                    {
+                        Reason = viewModel.Reason,
+                        ReportedMember = user,
+                        Reporter = LoggedOnReadOnlyUser
+                    };
                     _reportService.MemberReport(report);
 
                     try
@@ -1193,12 +1198,12 @@
 
                 // Redisplay list of users
                 var allViewModelUsers = allUsers.Select(user => new PublicSingleMemberListViewModel
-                                                                    {
-                                                                        UserName = user.UserName,
-                                                                        NiceUrl = user.NiceUrl,
-                                                                        CreateDate = user.CreateDate,
-                                                                        TotalPoints = user.TotalPoints,
-                                                                    }).ToList();
+                {
+                    UserName = user.UserName,
+                    NiceUrl = user.NiceUrl,
+                    CreateDate = user.CreateDate,
+                    TotalPoints = user.TotalPoints,
+                }).ToList();
 
                 var memberListModel = new PublicMemberListViewModel
                 {

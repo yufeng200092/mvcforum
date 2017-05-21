@@ -37,6 +37,7 @@ namespace MVCForum.Domain.DomainModel
         public string Password { get; set; }
         public string PasswordSalt { get; set; }
         public string Email { get; set; }
+        public string Nickname { get; set; }
         public string PasswordQuestion { get; set; }
         public string PasswordAnswer { get; set; }
         public bool IsApproved { get; set; }

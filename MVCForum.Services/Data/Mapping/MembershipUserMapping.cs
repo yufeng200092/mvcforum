@@ -17,6 +17,9 @@ namespace MVCForum.Services.Data.Mapping
             Property(x => x.Password).IsRequired().HasMaxLength(128);
             Property(x => x.PasswordSalt).IsOptional().HasMaxLength(128);
             Property(x => x.Email).IsOptional().HasMaxLength(256);
+            Property(x => x.Nickname).IsRequired().HasMaxLength(150)
+                                    .HasColumnAnnotation("Index",
+                                    new IndexAnnotation(new IndexAttribute("IX_MembershipUser_Nickname", 1) { IsUnique = false }));
             Property(x => x.PasswordQuestion).IsOptional().HasMaxLength(256);
             Property(x => x.PasswordAnswer).IsOptional().HasMaxLength(256);
             Property(x => x.IsApproved).IsRequired();
@@ -132,7 +135,7 @@ namespace MVCForum.Services.Data.Mapping
                 m.MapLeftKey("UserIdentifier");
                 m.MapRightKey("RoleIdentifier");
             });
-           
+
             // Many-to-many join table - a badge may belong to many users
             HasMany(t => t.Badges)
            .WithMany(t => t.Users)

@@ -160,6 +160,7 @@
             membershipUser.Twitter = StringUtils.SafePlainText(membershipUser.Twitter);
             membershipUser.UserName = StringUtils.SafePlainText(membershipUser.UserName);
             membershipUser.Website = StringUtils.SafePlainText(membershipUser.Website);
+            membershipUser.Nickname = StringUtils.SafePlainText(membershipUser.Nickname);
             return membershipUser;
         }
 
@@ -284,7 +285,7 @@
             }
             else
             {
-                if (string.IsNullOrEmpty(newUser.UserName))
+                if (string.IsNullOrEmpty(newUser.UserName)||System.Text.RegularExpressions.Regex.IsMatch(newUser.UserName, @"^([A-Za-z0-9]{4,150})*$"))
                 {
                     status = MembershipCreateStatus.InvalidUserName;
                 }

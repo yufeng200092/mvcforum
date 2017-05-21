@@ -1,6 +1,5 @@
 ﻿@using MVCForum.Website.Application.ExtensionMethods
 @model MVCForum.Website.ViewModels.MemberFrontEndEditViewModel
-
 @{
     Layout = "~/Views/Shared/_LayoutFullWidth.cshtml";
     ViewBag.Title = Html.LanguageString("Members.EditProfile");
@@ -17,10 +16,8 @@
             }
         });
     </script>
-
 }
 <div class="row">
-
     <div class="col-md-6 col-md-offset-3">
         @using (Html.BeginForm("Edit", "Members", FormMethod.Post, new { enctype = "multipart/form-data", @class = "editmemberform" }))
         {
@@ -30,23 +27,24 @@
 
             <fieldset>
                 <legend>@ViewBag.Title</legend>
-
                 <p class="changepasswordtext">
                     @Html.Raw(string.Format(Html.LanguageString("Members.ChangePassword.Link"), string.Format("<a href=\"{0}\">{1}</a>", Url.Action("ChangePassword"), Html.LanguageString("Members.ChangePassword.Title"))))
                 </p>
-
                 <div class="form-group">
                     @Html.LabelFor(x => x.UserName)
                     @Html.TextBoxFor(x => x.UserName, new { @class = "form-control" })
                     @Html.ValidationMessageFor(x => x.UserName)
                 </div>
-
+                <div class="form-group">
+                    @Html.LabelFor(x => x.Nickname)
+                    @Html.TextBoxFor(x => x.Nickname, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.Nickname)
+                </div>
                 <div class="form-group">
                     @Html.LabelFor(x => x.Email)
                     @Html.TextBoxFor(x => x.Email, new { @class = "form-control", type = "email" })
                     @Html.ValidationMessageFor(x => x.Email)
                 </div>
-
                 @if (!Model.DisableFileUploads)
                 {
                     <div class="row membereditavatar">
@@ -67,19 +65,16 @@
                         </div>
                     </div>
                 }
-
                 <div class="form-group">
                     @Html.LabelFor(x => x.Age)
                     @Html.TextBoxFor(x => x.Age, new { @class = "form-control" })
                     @Html.ValidationMessageFor(x => x.Age)
                 </div>
-
                 <div class="form-group">
                     @Html.LabelFor(x => x.Location)
                     @Html.TextBoxFor(x => x.Location, new { @class = "form-control" })
                     @Html.ValidationMessageFor(x => x.Location)
                 </div>
-
                 @if (Model.AmountOfPoints >= settings.PointsAllowedForExtendedProfile)
                 {
                     <div class="form-group">
@@ -109,20 +104,17 @@
                         </div>
                     }
                 }
-
                 <div class="checkbox">
-                    @using (Html.BeginLabelFor(m => m.DisableEmailNotifications, new {@class = "checkbox"}))
+                    @using (Html.BeginLabelFor(m => m.DisableEmailNotifications, new { @class = "checkbox" }))
                     {
                         @Html.CheckBoxFor(m => m.DisableEmailNotifications)
                     }
                     @Html.ValidationMessageFor(m => m.DisableEmailNotifications)
                 </div>
-
                 <div class="submit-holder">
                     <button type="submit" class="btn-mvc-green btn-mvc-large">@Html.LanguageString("Buttons.Save")</button>
                 </div>
             </fieldset>
         }
-
     </div>
 </div>

@@ -21,6 +21,7 @@ namespace MVCForum.Website.ViewModels
         [Required]
         [ForumMvcResourceDisplayName("Members.Label.Username")]
         [StringLength(150, MinimumLength = 4)]
+        [RegularExpression(@"^[A-Za-z0-9]*$", ErrorMessage = "用户名必须为字母数字组合")]
         public string UserName { get; set; }
 
         [Required]
@@ -67,7 +68,13 @@ namespace MVCForum.Website.ViewModels
         [Required]
         [ForumMvcResourceDisplayName("Members.Label.Username")]
         [StringLength(150, MinimumLength = 4)]
+        [Editable(false)]
         public string UserName { get; set; }
+
+        [Required]
+        [ForumMvcResourceDisplayName("Members.Label.Nickname")]
+        [StringLength(150, MinimumLength = 1)]
+        public string Nickname { get; set; }
 
         [ForumMvcResourceDisplayName("Members.Label.EmailAddress")]
         [EmailAddress]
