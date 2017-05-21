@@ -1,8 +1,8 @@
 ﻿@if (!Context.IsMobileDevice())
 {
-<script src="@Url.Content("~/scripts/tinymce/tinymce.min.js")" type="text/javascript"></script>
-<script src="@Url.Content("~/Scripts/tinymceplugins/ImageUpload/imageupload.js")" type="text/javascript"></script>
-    <script type="text/javascript">        
+    <script src="@Url.Content("~/scripts/tinymce/tinymce.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/tinymceplugins/ImageUpload/imageupload.js")" type="text/javascript"></script>
+    <script type="text/javascript">
         tinymce.init({
             selector: "textarea.rte",
             browser_spellcheck: true,
@@ -16,10 +16,26 @@
             relative_urls: false,
             menubar: false,
             toolbar_items_size: 'small',
-
+            content_css: app_base + "content/tinymce.css",
             height: 175,
             nonbreaking_force_tab: true,
-            language: 'zh_CN'
+            language: 'zh_CN',
+            codesample_languages: [
+               { text: 'HTML/XML', value: 'markup' },
+               { text: 'JavaScript', value: 'javascript' },
+               { text: 'CSS', value: 'css' },
+               { text: 'PHP', value: 'php' },
+               { text: 'Ruby', value: 'ruby' },
+               { text: 'Python', value: 'python' },
+               { text: 'Java', value: 'java' },
+               { text: 'C', value: 'c' },
+               { text: 'C#', value: 'csharp' },
+               { text: 'C++', value: 'cpp' },
+               { text: 'SQL', value: 'sql' },
+               { text: 'Objective-C', value: 'objectivec' },
+               { text: 'Go', value: 'go' },
+               { text: 'JSON', value: 'json' }
+            ]
             //setup: function(editor) {
             //    editor.on( 'keydown', function(editor, evt) {
             //        if (evt.keyCode == 9) {
@@ -41,6 +57,6 @@
         var generalError = '@(Html.Lang("Errors.GenericMessage"))';
     </script>
 }
-<div class="tinymceholder">    
-    @Html.TextArea(string.Empty, new {@class = "rte"})     
+<div class="tinymceholder">
+    @Html.TextArea(string.Empty, new { @class = "rte" })
 </div>

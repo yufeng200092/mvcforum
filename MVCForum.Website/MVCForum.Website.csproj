@@ -765,6 +765,8 @@
     <Content Include="Content\jstree\themes\proton\style.css" />
     <Content Include="Content\jstree\themes\proton\style.min.css" />
     <Content Include="Content\jstree\themes\proton\throbber.gif" />
+    <Content Include="Content\prism\prism.css" />
+    <Content Include="Content\prism\prism.js" />
     <Content Include="Content\spectrum\i18n\jquery.spectrum-de.js" />
     <Content Include="Content\spectrum\i18n\jquery.spectrum-dk.js" />
     <Content Include="Content\spectrum\i18n\jquery.spectrum-es.js" />

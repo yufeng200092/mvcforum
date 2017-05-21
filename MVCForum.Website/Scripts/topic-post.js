@@ -323,6 +323,11 @@ var AjaxPostSuccess = function () {
     // Finally chnage the name of this element so it doesn't insert it into the same one again
     postHolder.attr("id", "tonystarkrules");
 
+    // 高亮代码
+    $('#tonystarkrules pre[class*="language-"]').each(function () {
+        Prism.highlightElement(this);
+    }); 
+
     // And more finally clear the post box
     $(".rte").val("");
     if ($(".bbeditorholder textarea").length > 0) {
