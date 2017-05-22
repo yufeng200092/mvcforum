@@ -289,7 +289,7 @@
             }
             else
             {
-                if (string.IsNullOrEmpty(newUser.UserName) || System.Text.RegularExpressions.Regex.IsMatch(newUser.UserName, @"^([A-Za-z0-9]{4,30})*$"))
+                if (string.IsNullOrEmpty(newUser.UserName) || !System.Text.RegularExpressions.Regex.IsMatch(newUser.UserName, @"^([A-Za-z0-9]{4,30})*$"))
                 {
                     status = MembershipCreateStatus.InvalidUserName;
                 }
