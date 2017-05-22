@@ -11,7 +11,7 @@
     <div class="rowcreater hidden-xs">
         <a id="comment-@postId"></a>
         <a href="@Model.Post.User.NiceUrl">
-            <img src="@Model.Post.User.MemberImage(SiteConstants.Instance.GravatarPostSize)" alt="@Model.Post.User.UserName">
+            <img src="@Model.Post.User.MemberImage(SiteConstants.Instance.GravatarPostSize)" alt="@Model.Post.User.Nickname">
         </a>
         @if (Model.Post.User.Roles.Any(x => x.RoleName.Contains(AppConstants.AdminRoleName)))
         {
@@ -96,7 +96,7 @@
                 {
                     <p><a href="@Model.ParentTopic.NiceUrl">@Model.ParentTopic.Name</a></p>
                 }
-                <a class="postmember-@postId" href="@Html.Raw(Model.Post.User.NiceUrl)">@Html.Raw(Model.Post.User.UserName)</a>
+                <a class="postmember-@postId" href="@Html.Raw(Model.Post.User.NiceUrl)">@Html.Raw(Model.Post.User.Nickname)</a>
                 @Html.LanguageString("Post.PostedThis")
                 @DatesUI.GetPrettyDate(Model.Post.DateCreated.ToString())
                 @if (isAdmin && !string.IsNullOrEmpty(Model.Post.IpAddress))

@@ -9,8 +9,8 @@
             @foreach (var member in Model.ActiveMembers)
             {
                 <li>
-                    <a title="@Html.Raw(member.UserName)" href="@member.NiceUrl">
-                        <img src="@member.MemberImage(SiteConstants.Instance.GravatarLeaderboardSize)" alt="@Html.Raw(member.UserName)" />
+                    <a title="@Html.Raw(member.Nickname)" href="@member.NiceUrl">
+                        <img src="@member.MemberImage(SiteConstants.Instance.GravatarLeaderboardSize)" alt="@Html.Raw(member.Nickname)" />
                     </a>
                 </li>
             }
