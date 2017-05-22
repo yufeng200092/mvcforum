@@ -268,6 +268,7 @@
                     var viewModel = new MemberAddViewModel
                     {
                         UserName = user.UserName,
+                        Nickname = user.Nickname,
                         Email = user.Email,
                         Password = user.Password,
                         IsApproved = user.IsApproved,
@@ -357,16 +358,36 @@
                 var memberEmailAuthorisationNeeded = settings.NewMemberEmailConfirmation == true;
                 var homeRedirect = false;
 
+                // Before we do anything - Check stop words
+                var stopWords = _bannedWordService.GetAll(true);
+                var bannedWords = _bannedWordService.GetAll().Select(x => x.Word).ToList();
+
+                // Check the fields for bad words
+                foreach (var stopWord in stopWords)
+                {
+                    if ((userModel.Nickname != null && userModel.Nickname.IndexOf(stopWord.Word, StringComparison.CurrentCultureIgnoreCase) >= 0))
+                    {
+                        ShowMessage(new GenericMessageViewModel
+                        {
+                            Message = LocalizationService.GetResourceString("StopWord.Error"),
+                            MessageType = GenericMessages.danger
+                        });
+
+                        // Ahhh found a stop word. Abandon operation captain.
+                        return View(userModel);
+
+                    }
+                }
+
                 var userToSave = new MembershipUser
                 {
-                    UserName = _bannedWordService.SanitiseBannedWords(userModel.UserName),
+                    UserName = _bannedWordService.SanitiseBannedWords(userModel.UserName, bannedWords),
+                    Nickname = _bannedWordService.SanitiseBannedWords(userModel.Nickname, bannedWords),
                     Email = userModel.Email,
                     Password = userModel.Password,
                     IsApproved = userModel.IsApproved,
                     Comment = userModel.Comment
                 };
-
-                userToSave.Nickname = userToSave.UserName;
 
                 var createStatus = MembershipService.CreateUser(userToSave);
                 if (createStatus != MembershipCreateStatus.Success)
@@ -977,7 +998,7 @@
                     userModel.Avatar = user.Avatar;
 
                     // Update other users properties
-                    user.Nickname = _bannedWordService.SanitiseBannedWords(userModel.Nickname, bannedWords);
+                    //user.Nickname = _bannedWordService.SanitiseBannedWords(userModel.Nickname, bannedWords);
                     user.Age = userModel.Age;
                     user.Facebook = _bannedWordService.SanitiseBannedWords(userModel.Facebook, bannedWords);
                     user.Location = _bannedWordService.SanitiseBannedWords(userModel.Location, bannedWords);
@@ -1001,6 +1022,19 @@
 
                         user.UserName = sanitisedUsername;
                         changedUsername = true;
+                    }
+
+                    var sanitisedNickname = _bannedWordService.SanitiseBannedWords(userModel.Nickname, bannedWords);
+                    if (sanitisedNickname != user.Nickname)
+                    {
+                        if (MembershipService.GetUserByNickname(sanitisedNickname) != null)
+                        {
+                            unitOfWork.Rollback();
+                            ModelState.AddModelError(string.Empty, LocalizationService.GetResourceString("Members.Errors.DuplicateNickname"));
+                            return View(userModel);
+                        }
+
+                        user.Nickname = sanitisedNickname;
                     }
 
                     // User is trying to update their email address, need to 

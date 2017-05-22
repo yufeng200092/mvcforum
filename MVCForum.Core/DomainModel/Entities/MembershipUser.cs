@@ -14,6 +14,7 @@ namespace MVCForum.Domain.DomainModel
         Success,
         DuplicateUserName,
         DuplicateEmail,
+        DuplicateNickname,
         InvalidPassword,
         InvalidEmail,
         InvalidAnswer,

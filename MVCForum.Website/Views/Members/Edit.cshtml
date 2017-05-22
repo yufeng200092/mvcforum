@@ -32,7 +32,7 @@
                 </p>
                 <div class="form-group">
                     @Html.LabelFor(x => x.UserName)
-                    @Html.TextBoxFor(x => x.UserName, new { @class = "form-control" })
+                    @Html.TextBoxFor(x => x.UserName, new { @class = "form-control", @readonly = true })
                     @Html.ValidationMessageFor(x => x.UserName)
                 </div>
                 <div class="form-group">

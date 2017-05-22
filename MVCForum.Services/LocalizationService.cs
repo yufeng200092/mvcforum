@@ -24,7 +24,7 @@
         private readonly ICacheService _cacheService;
         private Language _currentLanguage;
         private readonly MVCForumContext _context;
-        private readonly Dictionary<string, string> _perRequestLanguageStrings;
+        private Dictionary<string, string> _perRequestLanguageStrings;
 
         /// <summary>
         /// Constructor
@@ -428,7 +428,14 @@
                 return _currentLanguage ?? (_currentLanguage = DefaultLanguage);
             }
 
-            set { _currentLanguage = value; }
+            set
+            {
+                if (_currentLanguage != value)
+                {
+                    _currentLanguage = value;
+                    _perRequestLanguageStrings = ResourceKeysByLanguage(_currentLanguage);
+                }
+            }
         }
 
         /// <summary>
@@ -870,8 +877,8 @@
                     {
                         if (!stringResource.ResourceValue.Equals(value))
                         {
-                            stringResource.ResourceValue = value;   
-                        }                     
+                            stringResource.ResourceValue = value;
+                        }
                     }
                     else
                     {

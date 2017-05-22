@@ -20,9 +20,14 @@ namespace MVCForum.Website.ViewModels
     {
         [Required]
         [ForumMvcResourceDisplayName("Members.Label.Username")]
-        [StringLength(150, MinimumLength = 4)]
-        [RegularExpression(@"^[A-Za-z0-9]*$", ErrorMessage = "用户名必须为字母数字组合")]
+        [StringLength(30, MinimumLength = 4)]
+        [RegularExpression(@"^[A-Za-z0-9]*$", ErrorMessageResourceName = "Members_Errors_UserNameMustBeLettersOrNumbers", ErrorMessageResourceType = typeof(Resources.strings))]
         public string UserName { get; set; }
+
+        [Required]
+        [ForumMvcResourceDisplayName("Members.Label.Nickname")]
+        [StringLength(30, MinimumLength = 1)]
+        public string Nickname { get; set; }
 
         [Required]
         [EmailAddress]

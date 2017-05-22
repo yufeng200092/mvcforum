@@ -32,6 +32,12 @@
                         </div>
 
                         <div class="form-group">
+                            @Html.LabelFor(x => Model.Nickname)
+                            @Html.TextBoxFor(x => Model.Nickname, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(x => x.Nickname)
+                        </div>
+
+                        <div class="form-group">
                             @Html.LabelFor(x => Model.Password)
                             @Html.PasswordFor(x => Model.Password, new { @class = "form-control" })
                             @Html.ValidationMessageFor(x => x.Password)

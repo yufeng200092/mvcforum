@@ -116,6 +116,9 @@
                 case MembershipCreateStatus.DuplicateEmail:
                     return _localizationService.GetResourceString("Members.Errors.DuplicateEmail");
 
+                case MembershipCreateStatus.DuplicateNickname:
+                    return _localizationService.GetResourceString("Members.Errors.DuplicateNickname");
+
                 case MembershipCreateStatus.InvalidPassword:
                     return _localizationService.GetResourceString("Members.Errors.InvalidPassword");
 
@@ -248,6 +251,7 @@
             return new MembershipUser
             {
                 UserName = string.Empty,
+                Nickname = string.Empty,
                 Password = string.Empty,
                 Email = string.Empty,
                 PasswordQuestion = string.Empty,
@@ -285,7 +289,7 @@
             }
             else
             {
-                if (string.IsNullOrEmpty(newUser.UserName)||System.Text.RegularExpressions.Regex.IsMatch(newUser.UserName, @"^([A-Za-z0-9]{4,150})*$"))
+                if (string.IsNullOrEmpty(newUser.UserName) || System.Text.RegularExpressions.Regex.IsMatch(newUser.UserName, @"^([A-Za-z0-9]{4,30})*$"))
                 {
                     status = MembershipCreateStatus.InvalidUserName;
                 }
@@ -294,6 +298,12 @@
                 if (GetUser(newUser.UserName, true) != null)
                 {
                     status = MembershipCreateStatus.DuplicateUserName;
+                }
+
+                // get by username
+                if (GetUserByNickname(newUser.Nickname, true) != null)
+                {
+                    status = MembershipCreateStatus.DuplicateNickname;
                 }
 
                 // Add get by email address
@@ -331,7 +341,8 @@
                     }
                     else
                     {
-                        newUser.IsApproved = true;}
+                        newUser.IsApproved = true;
+                    }
 
                     // url generator
                     newUser.Slug = ServiceHelpers.GenerateSlug(newUser.UserName, GetUserBySlugLike(ServiceHelpers.CreateUrl(newUser.UserName)), null);
@@ -344,7 +355,7 @@
                         {
                             var sb = new StringBuilder();
                             sb.Append($"<p>{string.Format(_localizationService.GetResourceString("Members.NewMemberRegistered"), settings.ForumName, settings.ForumUrl)}</p>");
-                            sb.Append($"<p>{newUser.UserName} - {newUser.Email}</p>");
+                            sb.Append($"<p>{newUser.UserName} - {newUser.Nickname} - {newUser.Email}</p>");
                             var email = new Email
                             {
                                 EmailTo = settings.AdminEmailAddress,
@@ -417,7 +428,7 @@
                 }
 
                 return member;
-            });                                    
+            });
         }
 
         /// <summary>
@@ -433,7 +444,7 @@
             return _cacheService.CachePerRequest(cacheKey, () =>
             {
                 MembershipUser member;
-       
+
                 if (removeTracking)
                 {
                     member = _context.MembershipUser.AsNoTracking()
@@ -445,6 +456,38 @@
                     member = _context.MembershipUser
                         .Include(x => x.Roles)
                         .FirstOrDefault(name => name.Email == email);
+                }
+
+                return member;
+            });
+
+        }
+
+        /// <summary>
+        /// Get a user by nickname
+        /// </summary>
+        /// <param name="nickname"></param>
+        /// <param name="removeTracking"></param>
+        /// <returns></returns>
+        public MembershipUser GetUserByNickname(string nickname, bool removeTracking = false)
+        {
+            nickname = StringUtils.SafePlainText(nickname);
+            var cacheKey = string.Concat(CacheKeys.Member.StartsWith, "GetUserByNickname-", nickname, "-", removeTracking);
+            return _cacheService.CachePerRequest(cacheKey, () =>
+            {
+                MembershipUser member;
+
+                if (removeTracking)
+                {
+                    member = _context.MembershipUser.AsNoTracking()
+                        .Include(x => x.Roles)
+                        .FirstOrDefault(name => name.Nickname == nickname);
+                }
+                else
+                {
+                    member = _context.MembershipUser
+                        .Include(x => x.Roles)
+                        .FirstOrDefault(name => name.Nickname == nickname);
                 }
 
                 return member;
@@ -481,7 +524,7 @@
                                     .AsNoTracking()
                                     .Where(name => name.Slug.ToUpper().Contains(slug.ToUpper()))
                                     .ToList();
-            });            
+            });
         }
 
         /// <summary>

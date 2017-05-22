@@ -11,15 +11,15 @@ namespace MVCForum.Services.Data.Mapping
         {
             HasKey(x => x.Id);
             Property(x => x.Id).IsRequired();
-            Property(x => x.UserName).IsRequired().HasMaxLength(150)
+            Property(x => x.UserName).IsRequired().HasMaxLength(30)
                                     .HasColumnAnnotation("Index",
                                     new IndexAnnotation(new IndexAttribute("IX_MembershipUser_UserName", 1) { IsUnique = true }));
             Property(x => x.Password).IsRequired().HasMaxLength(128);
             Property(x => x.PasswordSalt).IsOptional().HasMaxLength(128);
             Property(x => x.Email).IsOptional().HasMaxLength(256);
-            Property(x => x.Nickname).IsRequired().HasMaxLength(150)
+            Property(x => x.Nickname).IsRequired().HasMaxLength(30)
                                     .HasColumnAnnotation("Index",
-                                    new IndexAnnotation(new IndexAttribute("IX_MembershipUser_Nickname", 1) { IsUnique = false }));
+                                    new IndexAnnotation(new IndexAttribute("IX_MembershipUser_Nickname", 1) { IsUnique = true }));
             Property(x => x.PasswordQuestion).IsOptional().HasMaxLength(256);
             Property(x => x.PasswordAnswer).IsOptional().HasMaxLength(256);
             Property(x => x.IsApproved).IsRequired();

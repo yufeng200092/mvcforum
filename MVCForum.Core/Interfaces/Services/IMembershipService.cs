@@ -25,6 +25,7 @@ namespace MVCForum.Domain.Interfaces.Services
         string[] GetRolesForUser(string username);
         MembershipUser Get(Guid id);
         MembershipUser GetUser(string username, bool removeTracking = false);
+        MembershipUser GetUserByNickname(string nickname, bool removeTracking = false);
         MembershipUser GetUserByEmail(string email, bool removeTracking = false);
         MembershipUser GetUserBySlug(string slug);
         IList<MembershipUser> GetUserBySlugLike(string slug);

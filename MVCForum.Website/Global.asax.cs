@@ -105,6 +105,9 @@ namespace MVCForum.Website
             {
                 LoggingService.Error(lastError);
             }
+#if Release
+            Server.TransferRequest("~/Error");
+#endif
         }
 
     }
