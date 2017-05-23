@@ -36,5 +36,7 @@ namespace MVCForum.Domain.DomainModel
         public virtual IList<UploadedFile> Files { get; set; }
         public virtual IList<Favourite> Favourites { get; set; }
         public virtual IList<PostEdit> PostEdits { get; set; }
+        public virtual Post ReplyToPost { get; set; }
+        public virtual IList<Post> ReplyFromPosts { get; set; }
     }
 }

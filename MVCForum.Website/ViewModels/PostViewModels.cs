@@ -17,7 +17,7 @@ namespace MVCForum.Website.ViewModels
         public Guid Topic { get; set; }
         public bool DisablePosting { get; set; }
         public Guid? InReplyTo { get; set; }
-        public string ReplyToUsername { get; set; }
+        public string ReplyToNickname { get; set; }
     }
 
     public class ShowMorePostsViewModel

@@ -28,6 +28,11 @@ namespace MVCForum.Services.Data.Mapping
                 .WithRequired(x => x.Post)
                 .Map(x => x.MapKey("Post_Id"))
                 .WillCascadeOnDelete(false);
+
+            HasOptional(x => x.ReplyToPost)
+                .WithMany(x => x.ReplyFromPosts)
+                .HasForeignKey(t => t.InReplyTo)
+                .WillCascadeOnDelete(false);
             //ToTable("CustomTableName");
             //Property(t => t.TopicId).HasColumnName("Topic_Id");
         }

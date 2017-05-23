@@ -1059,7 +1059,7 @@
                             var postToQuote = _postService.Get(new Guid(quote));
                             viewModel.QuotedPost = postToQuote.PostContent;
                             viewModel.ReplyTo = postToQuote.Id;
-                            viewModel.ReplyToUsername = postToQuote.User.UserName;
+                            viewModel.ReplyToNickname = postToQuote.User.Nickname;
                         }
                         catch (Exception ex)
                         {
@@ -1075,7 +1075,7 @@
                             // Set the reply
                             var toReply = _postService.Get(new Guid(reply));
                             viewModel.ReplyTo = toReply.Id;
-                            viewModel.ReplyToUsername = toReply.User.UserName;
+                            viewModel.ReplyToNickname = toReply.User.Nickname;
                         }
                         catch (Exception ex)
                         {

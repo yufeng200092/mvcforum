@@ -45,7 +45,7 @@ namespace MVCForum.Website.ViewModels
         // Quote/Reply
         public string QuotedPost { get; set; }
         public Guid? ReplyTo { get; set; }
-        public string ReplyToUsername { get; set; }
+        public string ReplyToNickname { get; set; }
 
         // Stats
         public int Answers { get; set; }

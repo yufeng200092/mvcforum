@@ -286,7 +286,7 @@
                 using (UnitOfWorkManager.NewUnitOfWork())
                 {
                     var post = _postService.Get(id);
-                    return View(new ReportPostViewModel { PostId = post.Id, PostCreatorUsername = post.User.UserName });
+                    return View(new ReportPostViewModel { PostId = post.Id, PostCreatorUsername = post.User.Nickname });
                 }
             }
             return ErrorToHomePage(LocalizationService.GetResourceString("Errors.GenericMessage"));
@@ -323,7 +323,7 @@
                         Message = LocalizationService.GetResourceString("Report.ReportSent"),
                         MessageType = GenericMessages.success
                     };
-                    return View(new ReportPostViewModel { PostId = post.Id, PostCreatorUsername = post.User.UserName });
+                    return View(new ReportPostViewModel { PostId = post.Id, PostCreatorUsername = post.User.Nickname });
                 }
             }
             return ErrorToHomePage(LocalizationService.GetResourceString("Errors.GenericMessage"));

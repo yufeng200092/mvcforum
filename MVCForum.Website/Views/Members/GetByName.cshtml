@@ -3,7 +3,7 @@
 @model MVCForum.Website.ViewModels.ViewMemberViewModel
 @{
     Layout = "~/Views/Shared/_LayoutRightSideBar.cshtml";
-    ViewBag.Title = string.Concat(Model.User.UserName, " ",Html.LanguageString("Members.ProfileTitle"));
+    ViewBag.Title = string.Concat(Model.User.Nickname, " ",Html.LanguageString("Members.ProfileTitle"));
 }
 
 @section Header
@@ -49,11 +49,11 @@
     <div class="row">
 
         <div class="col-md-3 memberavatardetails">
-            <p class="memberavatar"><img src="@Model.User.MemberImage(SiteConstants.Instance.GravatarProfileSize)" alt="@Model.User.UserName"></p>
+            <p class="memberavatar"><img src="@Model.User.MemberImage(SiteConstants.Instance.GravatarProfileSize)" alt="@Model.User.Nickname"></p>
 
             @if (User.Identity.IsAuthenticated && Model.User.UserName != User.Identity.Name && Html.CurrentMember().DisablePrivateMessages != true && Html.Settings().EnablePrivateMessages)
             {
-                <p><a href="@Url.Action("View", "PrivateMessage", new { from = Model.User.Id }, null)" class="btn-mvc pm-panel" data-name="@string.Concat(Html.LanguageString("PM.Title"), Model.User.UserName)">@Html.LanguageString("Members.MessageMe")</a></p>
+                <p><a href="@Url.Action("View", "PrivateMessage", new { from = Model.User.Id }, null)" class="btn-mvc pm-panel" data-name="@string.Concat(Html.LanguageString("PM.Title"), Model.User.Nickname)">@Html.LanguageString("Members.MessageMe")</a></p>
             }
 
             @if (User.Identity.IsAuthenticated && Html.Settings().EnableMemberReporting && Model.User.Id != Model.LoggedOnUserId)
@@ -79,7 +79,7 @@
             <div class="membersection memberbio">
                 <div class="row">
                     <div class="col-md-12">
-                        <h3>@Model.User.UserName</h3>
+                        <h3>@Model.User.Nickname</h3>
                     </div>
                     <div class="col-md-6">
                         <p>@Html.LanguageString("Members.Profile.Joined") @DatesUI.GetPrettyDate(Model.User.CreateDate.ToString())</p>

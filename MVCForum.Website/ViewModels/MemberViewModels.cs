@@ -182,6 +182,7 @@ namespace MVCForum.Website.ViewModels
     {
         public Guid Id { get; set; }
         public string Username { get; set; }
+        public string Nickname { get; set; }
         public string Reason { get; set; }
     }
 
@@ -203,6 +204,9 @@ namespace MVCForum.Website.ViewModels
     {
         [ForumMvcResourceDisplayName("Members.Label.Username")]
         public string UserName { get; set; }
+
+        [ForumMvcResourceDisplayName("Members.Label.Nickname")]
+        public string Nickname { get; set; }
 
         public string NiceUrl { get; set; }
 

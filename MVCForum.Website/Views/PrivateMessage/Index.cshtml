@@ -25,9 +25,9 @@
                         {
                             <tr>
                                 <td>
-                                    <a href="@Url.Action("View", new { from = message.User.Id })" class="pm-panel" data-name="@string.Concat(Html.Lang("PM.Title"), message.User.UserName)">
+                                    <a href="@Url.Action("View", new { from = message.User.Id })" class="pm-panel" data-name="@string.Concat(Html.Lang("PM.Title"), message.User.Nickname)">
                                         <strong>
-                                            @message.User.UserName 
+                                            @message.User.Nickname 
                                         </strong>
                                     </a>
                                     @if (message.HasUnreadMessages){<text><i class="fa fa-commenting-o newmessageicon"></i></text>}

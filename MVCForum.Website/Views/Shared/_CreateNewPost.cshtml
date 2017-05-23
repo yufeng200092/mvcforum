@@ -13,16 +13,16 @@
         }
         if (SiteConstants.Instance.ChosenEditor.ToLower().Contains("tiny"))
         {
-            Model.PostContent = string.Concat("<blockquote>", Model.PostContent, "</blockquote>");
+            Model.PostContent = string.Concat("<blockquote>", Model.PostContent, "</blockquote><p></p>");
         }
     }
 }
 @if (!Model.DisablePosting)
 {
-    if (Model.InReplyTo != null && !string.IsNullOrEmpty(Model.ReplyToUsername))
+    if (Model.InReplyTo != null && !string.IsNullOrEmpty(Model.ReplyToNickname))
     {
         <div class="showreplyto">
-            @Html.Lang("Post.ReplyingTo") <strong>@Model.ReplyToUsername</strong>
+            @Html.Lang("Post.ReplyingTo") <strong>@Model.ReplyToNickname</strong>
         </div>
     }
     <div id="createpostholder">

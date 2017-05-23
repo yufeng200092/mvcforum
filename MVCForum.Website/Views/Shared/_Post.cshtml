@@ -97,7 +97,16 @@
                     <p><a href="@Model.ParentTopic.NiceUrl">@Model.ParentTopic.Name</a></p>
                 }
                 <a class="postmember-@postId" href="@Html.Raw(Model.Post.User.NiceUrl)">@Html.Raw(Model.Post.User.Nickname)</a>
-                @Html.LanguageString("Post.PostedThis")
+
+                @if (Model.Post.InReplyTo != null)
+                {
+                    @: @Html.Lang("Post.ReplyingTo") <strong>@Model.Post.ReplyToPost.User.Nickname</strong>
+                }
+                else
+                {
+                    @: @Html.LanguageString("Post.PostedThis")
+                }
+
                 @DatesUI.GetPrettyDate(Model.Post.DateCreated.ToString())
                 @if (isAdmin && !string.IsNullOrEmpty(Model.Post.IpAddress))
                 {
@@ -113,8 +122,8 @@
                         else
                         {
                             <text> - @Html.LanguageString("Post.LastEdited")  @DatesUI.GetPrettyDate(Model.Post.DateEdited.ToString())</text>
-    }
-}
+                        }
+                    }
                 </span>
             </div>
 

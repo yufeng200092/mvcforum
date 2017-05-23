@@ -1177,7 +1177,7 @@
                 using (UnitOfWorkManager.NewUnitOfWork())
                 {
                     var user = MembershipService.GetUser(id);
-                    return View(new ReportMemberViewModel { Id = user.Id, Username = user.UserName });
+                    return View(new ReportMemberViewModel { Id = user.Id, Username = user.UserName, Nickname = user.Nickname });
                 }
             }
             return ErrorToHomePage(LocalizationService.GetResourceString("Errors.GenericMessage"));
@@ -1215,7 +1215,7 @@
                         Message = LocalizationService.GetResourceString("Report.ReportSent"),
                         MessageType = GenericMessages.success
                     };
-                    return View(new ReportMemberViewModel { Id = user.Id, Username = user.UserName });
+                    return View(new ReportMemberViewModel { Id = user.Id, Username = user.UserName, Nickname = user.Nickname });
                 }
             }
             return ErrorToHomePage(LocalizationService.GetResourceString("Errors.GenericMessage"));
@@ -1234,6 +1234,7 @@
                 var allViewModelUsers = allUsers.Select(user => new PublicSingleMemberListViewModel
                 {
                     UserName = user.UserName,
+                    Nickname = user.Nickname,
                     NiceUrl = user.NiceUrl,
                     CreateDate = user.CreateDate,
                     TotalPoints = user.TotalPoints,

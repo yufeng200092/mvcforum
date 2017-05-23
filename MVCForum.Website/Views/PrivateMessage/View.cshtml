@@ -1,13 +1,13 @@
 ﻿@model MVCForum.Website.ViewModels.ViewPrivateMessageViewModel
 @{
     Layout = Model.IsAjaxRequest ? "" : "~/Views/Shared/_LayoutFullWidth.cshtml";
-    ViewBag.Title = string.Concat(Html.LanguageString("PM.Title"), Model.From.UserName);
+    ViewBag.Title = string.Concat(Html.LanguageString("PM.Title"), Model.From.Nickname);
 }
 
 <div class="pmview">
     <div class="row">
 
-        <div class="@(Model.IsAjaxRequest ? "col-md-12" : "col-md-8 col-md-offset-2")">            
+        <div class="@(Model.IsAjaxRequest ? "col-md-12" : "col-md-8 col-md-offset-2")">
             @if (!Model.IsAjaxRequest)
             {
                 <div class="btn-group top-pm-nav">
@@ -15,7 +15,7 @@
                 </div>
                 <h1>
                     <a href="@Model.From.NiceUrl">
-                        <img src="@Model.From.MemberImage(SiteConstants.Instance.GravatarPostSize)" alt="@Model.From.UserName" class="pmavatar" /> @Model.From.UserName
+                        <img src="@Model.From.MemberImage(SiteConstants.Instance.GravatarPostSize)" alt="@Model.From.Nickname" class="pmavatar" /> @Model.From.Nickname
                         @if (Model.FromUserIsOnline)
                         {
                             <span class="label label-success">@Html.Lang("PM.MemberIsOnline")</span>
@@ -25,8 +25,8 @@
             }
             <ul class="pmadminav">
                 <li>
-                    <a href="#" class="btn-mvc pm-block" data-userid="@Model.From.Id" data-blocktext="@Html.Lang("PM.Block") @Model.From.UserName" data-isblocked="@Model.IsBlocked.ToString().ToLower()" data-blockedtext="@Html.Lang("PM.Blocked") @Model.From.UserName">                        
-                        @(Model.IsBlocked ? Html.Lang("PM.Blocked") : Html.Lang("PM.Block")) @Model.From.UserName
+                    <a href="#" class="btn-mvc pm-block" data-userid="@Model.From.Id" data-blocktext="@Html.Lang("PM.Block") @Model.From.Nickname" data-isblocked="@Model.IsBlocked.ToString().ToLower()" data-blockedtext="@Html.Lang("PM.Blocked") @Model.From.Nickname">
+                        @(Model.IsBlocked ? Html.Lang("PM.Blocked") : Html.Lang("PM.Block")) @Model.From.Nickname
                     </a>
                 </li>
                 @if (Html.Settings().EnableMemberReporting)
@@ -41,9 +41,9 @@
                 }
             </ul>
             <div class="createmessageholder">
-                @Html.Action("Create", new {to = Model.From.Id})
+                @Html.Action("Create", new { to = Model.From.Id })
             </div>
-            
+
             <div class="privatemessages">
                 <span id="newpmmarker"></span>
                 @foreach (var pm in Model.PrivateMessages)
