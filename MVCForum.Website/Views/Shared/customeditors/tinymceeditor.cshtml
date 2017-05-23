@@ -11,7 +11,8 @@
                 "wordcount visualblocks visualchars code fullscreen media nonbreaking",
                 "textcolor colorpicker codesample"
             ],
-            toolbar1: "bold italic underline strikethrough bullist hr | link unlink @(ViewBag.ImageUploadType ?? "image") code blockquote | codesample | forecolor backcolor | formatselect",
+            toolbar1: "bold italic underline strikethrough bullist hr | link unlink @(ViewBag.ImageUploadType ?? "image") code blockquote | " +
+                "@((ViewContext.RouteData.GetRequiredString("controller").ToLower() == "privatemessage")?"": "codesample | forecolor backcolor |" ) formatselect",
             remove_linebreaks: false,
             relative_urls: false,
             menubar: false,

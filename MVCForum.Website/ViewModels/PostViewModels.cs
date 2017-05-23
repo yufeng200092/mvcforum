@@ -59,6 +59,7 @@ namespace MVCForum.Website.ViewModels
         public string PostCreatorUsername { get; set; }
         
         [Required]
+        [ForumMvcResourceDisplayName("Report.Reason")]
         public string Reason { get; set; }
     }
 
