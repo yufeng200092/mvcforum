@@ -183,6 +183,7 @@ namespace MVCForum.Website.ViewModels
         public Guid Id { get; set; }
         public string Username { get; set; }
         public string Nickname { get; set; }
+        [ForumMvcResourceDisplayName("Report.Reason")]
         public string Reason { get; set; }
     }
 
