@@ -967,3 +967,9 @@ div.mce-path { padding: 2px 10px; margin: 0; }
         .postuser {font-style:italic;}
     }
 }
+
+.carousel-inner {
+    .item { height:100%;
+          img { width:100%;height:100% }
+    }
+}

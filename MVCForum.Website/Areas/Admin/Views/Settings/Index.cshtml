@@ -37,6 +37,16 @@
                 @Html.ValidationMessageFor(model => model.ForumUrl)
             </div>
 
+            <div class="form-group">
+                @Html.LabelFor(model => model.Author)
+                @Html.TextBoxFor(model => model.Author, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Author)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Keywords)
+                @Html.TextBoxFor(model => model.Keywords, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Keywords)
+            </div>
 
             <div class="form-group">
                 @Html.LabelFor(model => model.PageTitle)

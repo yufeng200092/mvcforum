@@ -1954,3 +1954,9 @@ div.mce-path {
   .moderatepostholder .postsnippet .postuser {
     font-style: italic; }
 
+.carousel-inner .item {
+  height: 100%; }
+  .carousel-inner .item img {
+    width: 100%;
+    height: 100%; }
+

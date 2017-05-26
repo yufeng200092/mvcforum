@@ -17,8 +17,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title</title>
-    <meta name="keywords" content="" />
-    <meta name="author" content="YF" />
+    <meta name="keywords" content=@ViewBag.Keywords />
+    <meta name="author" content=@ViewBag.Author />
     <meta name="description" content="@ViewBag.MetaDesc" />
     <meta property="og:url" content="@HttpContext.Current.Request.Url.AbsoluteUri" />
     <meta property="og:description" content="@ViewBag.MetaDesc" />
@@ -146,7 +146,7 @@
                         <!-- ########################## IMPORTANT - PLEASE DO NOT REMOVE WITHOUT LICENSE ###########################
 
                             If you would like to remove the powered by notice, then please vist http://www.mvcforum.com/license -->
-                        <p>沪ICP备17022653号-1</p>
+                        <p>沪ICP备17022653号</p>
                         <p>&copy; @DateTime.UtcNow.Year - @Html.LanguageString("Layout.PoweredBy") <a rel="nofollow" href="http://www.mvcforum.com">MVCForum.com</a> , <a rel="nofollow" href="http://www.yf126.cc">INF未来</a></p>
 
                         <!--########################## IMPORTANT - PLEASE DO NOT REMOVE WITHOUT LICENSE ########################### -->

@@ -11,6 +11,8 @@ namespace MVCForum.Services.Data.Mapping
             Property(x => x.Id).IsRequired();
             Property(x => x.ForumName).IsOptional().HasMaxLength(500);
             Property(x => x.ForumUrl).IsOptional().HasMaxLength(500);
+            Property(x => x.Keywords).IsOptional().HasMaxLength(200);
+            Property(x => x.Author).IsOptional().HasMaxLength(100);
             Property(x => x.IsClosed).IsOptional();
             Property(x => x.EnableRSSFeeds).IsOptional();
             Property(x => x.DisplayEditedBy).IsOptional();

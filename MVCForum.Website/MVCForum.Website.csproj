@@ -1256,6 +1256,7 @@
     <None Include="_bin_deployableAssemblies\x86\Microsoft.VC90.CRT\Microsoft.VC90.CRT.manifest" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Content\Images\carousel\" />
     <Folder Include="Content\languagepacks\" />
     <Folder Include="Content\uploads\" />
     <Folder Include="Views\Error\" />

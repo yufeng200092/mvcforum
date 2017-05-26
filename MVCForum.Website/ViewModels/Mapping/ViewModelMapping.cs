@@ -127,6 +127,8 @@ namespace MVCForum.Website.ViewModels.Mapping
             existingSettings.NewMemberEmailConfirmation = settingsViewModel.NewMemberEmailConfirmation;
             existingSettings.PageTitle = settingsViewModel.PageTitle;
             existingSettings.MetaDesc = settingsViewModel.MetaDesc;
+            existingSettings.Author = settingsViewModel.Author;
+            existingSettings.Keywords = settingsViewModel.Keywords;
             existingSettings.EnableEmoticons = settingsViewModel.EnableEmoticons;
             existingSettings.DisableDislikeButton = settingsViewModel.DisableDislikeButton;
             existingSettings.AgreeToTermsAndConditions = settingsViewModel.AgreeToTermsAndConditions;
@@ -185,6 +187,8 @@ namespace MVCForum.Website.ViewModels.Mapping
                 SuspendRegistration = currentSettings.SuspendRegistration ?? false,
                 PageTitle = currentSettings.PageTitle,
                 MetaDesc = currentSettings.MetaDesc,
+                Author = currentSettings.Author,
+                Keywords = currentSettings.Keywords,
                 EnableEmoticons = currentSettings.EnableEmoticons == true,
                 DisableDislikeButton = currentSettings.DisableDislikeButton,
                 TermsAndConditions = currentSettings.TermsAndConditions,

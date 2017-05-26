@@ -1,19 +1,64 @@
-﻿
+﻿<script>
+    $(function () {
+        var img = $('.carousel-inner');
+        img.height(img.width() * 0.6);
+    });
+</script>
+
 <div class="row documentation-message">
-    <div class="col-md-6">
+    <div class="col-md-12">
 
         <div class="panel panel-mvc">
-            <div class="panel-heading">Documentation</div>
+            @*<div class="panel-heading">Documentation</div>*@
             <div class="panel-body">
-                <p>
-                    We are slowly putting up all our documentation on <a href="https://github.com/YodasMyDad/mvcforum/wiki">Github in the Wiki</a>. Please feel free to suggest areas which we are missing.
-                </p>
-                <p><a href="http://www.mvcforum.com" class="btn-mvc">Go To Main Site</a></p>
+                @*<p>
+                        We are slowly putting up all our documentation on <a href="https://github.com/YodasMyDad/mvcforum/wiki">Github in the Wiki</a>. Please feel free to suggest areas which we are missing.
+                    </p>
+                    <p><a href="http://www.mvcforum.com" class="btn-mvc">Go To Main Site</a></p>*@
+
+                <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                    <!-- 轮播（Carousel）指标 -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#myCarousel" data-slide-to="1"></li>
+                        <li data-target="#myCarousel" data-slide-to="2"></li>
+                    </ol>
+                    <!-- 轮播（Carousel）项目 -->
+                    <div class="carousel-inner">
+                        <div class="item active">
+                            <img src="~/Content/Images/carousel/carousel1.png" alt="First slide">
+                            <div class="carousel-caption">
+
+                            </div>
+                        </div>
+                        <div class="item" style="height:100%">
+                            <img src="~/Content/Images/carousel/carousel2.png" alt="Second slide">
+                            <div class="carousel-caption">
+
+                            </div>
+                        </div>
+                        <div class="item" style="height:100%">
+                            <img src="~/Content/Images/carousel/carousel3.png" alt="Third slide">
+                            <div class="carousel-caption">
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 轮播（Carousel）导航 -->
+                    <a class="carousel-control left" href="#myCarousel"
+                       data-slide="prev">
+                        &lsaquo;
+                    </a>
+                    <a class="carousel-control right" href="#myCarousel"
+                       data-slide="next">
+                        &rsaquo;
+                    </a>
+                </div>
             </div>
         </div>
 
     </div>
-    <div class="col-md-6">
+    <!--<div class="col-md-6">
 
         <div class="panel panel-mvc">
             <div class="panel-heading">Help Us - Follow & Share</div>
@@ -35,5 +80,5 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>-->
 </div>

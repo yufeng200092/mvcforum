@@ -35,6 +35,14 @@ namespace MVCForum.Website.Areas.Admin.ViewModels
         [StringLength(200)]
         public string ForumUrl { get; set; }
 
+        [DisplayName("Keywords")]
+        [MaxLength(200)]
+        public string Keywords { get; set; }
+
+        [DisplayName("Author")]
+        [MaxLength(100)]
+        public string Author { get; set; }
+
         [DisplayName("Close Forum")]
         [Description("Close the forum for maintenance")]
         public bool IsClosed { get; set; }

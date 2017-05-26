@@ -14,6 +14,8 @@ namespace MVCForum.Domain.DomainModel
         public string ForumUrl { get; set; }
         public string PageTitle { get; set; }
         public string MetaDesc { get; set; }
+        public string Author { get; set; }
+        public string Keywords { get; set; }
         public bool IsClosed { get; set; }
         public bool EnableRSSFeeds { get; set; }
         public bool DisplayEditedBy { get; set; }
