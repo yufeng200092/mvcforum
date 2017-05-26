@@ -796,7 +796,6 @@
     <Content Include="Content\spectrum\spectrum.css" />
     <Content Include="Content\spectrum\spectrum.js" />
     <Content Include="Content\tinymce.css" />
-    <Content Include="Content\uploads\readme.txt" />
     <Content Include="Installer\ManualSql\manualVersionOneSevenToOneEight.sql" />
     <Content Include="Scripts\badges.js" />
     <Content Include="Scripts\bbeditor\emoticons\alien.png" />
@@ -1258,6 +1257,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\languagepacks\" />
+    <Folder Include="Content\uploads\" />
     <Folder Include="Views\Error\" />
   </ItemGroup>
   <ItemGroup>
