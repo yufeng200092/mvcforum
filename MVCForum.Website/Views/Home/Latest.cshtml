@@ -1,0 +1,16 @@
+﻿@using MVCForum.Website.Application
+@{
+    Layout = "~/Views/Shared/_LayoutRightSideBar.cshtml";
+    ViewBag.Title = Html.Settings().PageTitle ?? Html.Settings().ForumName;
+    ViewBag.MetaDesc = Html.Settings().MetaDesc;
+    ViewBag.Author = Html.Settings().Author;
+    ViewBag.Keywords = Html.Settings().Keywords;
+}
+
+@section side
+{
+    @Html.Partial("_CommonSideNav", ViewData);
+}
+
+@Html.Action("LatestTopics", "Topic")
+

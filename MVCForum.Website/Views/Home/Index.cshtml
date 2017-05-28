@@ -6,22 +6,21 @@
     ViewBag.Author = Html.Settings().Author;
     ViewBag.Keywords = Html.Settings().Keywords;
 }
-    
 
 @section side
 {
-    @Html.Partial("_CommonSideNav")
+    @{
+        ViewData["IsIndex"] = true;
+        @:@Html.Partial("_CommonSideNav", ViewData);
+    }
 }
-
 @* ### Remove ME - Not needed, just for our forum ### *@
 @Html.Partial("_DocumentationBlock")
 @* ### Remove ME - Not needed, just for our forum ### *@
-
-@Html.Action("LatestTopics", "Topic")
-
+@*@Html.Action("LatestTopics", "Topic")*@
+@Html.Action("ListMainCategories", "Category")
 @*
     If you want to show categories on the home page instead of topics
     Just uncomment this action out and delete this text (And comment out the above action)
     @Html.Action("ListMainCategories", "Category")
 *@
-

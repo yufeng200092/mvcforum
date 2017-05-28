@@ -35,6 +35,11 @@
             return View();
         }
 
+        public ActionResult Latest()
+        {
+            return View();
+        }
+
         public ActionResult Leaderboard()
         {
             return View();
