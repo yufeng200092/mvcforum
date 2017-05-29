@@ -1,6 +1,12 @@
-﻿@Html.Action("Index", "Language")
-@Html.Action("ListCategorySideMenu", "Category")
+﻿@if (ViewData["IsIndex"] == null)
+{
+    @Html.Action("ListCategorySideMenu", "Category")
+}
+else {
+    @Html.Action("LatestTopicsIndex", "Topic")
+}
 @Html.Action("SideSearch", "Search")
 @Html.Action("PopularTags", "Tag", new { amountToTake = 20 })
 @Html.Action("CurrentWeekHighPointUsers", "Point")
-@Html.Action("HotTopics", "Topic")
+@*@Html.Action("HotTopics", "Topic")*@
+@Html.Action("Index", "Language")

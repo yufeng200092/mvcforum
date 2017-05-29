@@ -19,6 +19,7 @@ $font-lighter-base-color: #636267;
 $font-base-family: 'Open Sans', Arial, Helvetica, sans-serif;
 $font-light-weight: 300;
 
+$media-query-large:1200px;
 $media-query-medium: 991px;
 $media-query-small: 767px;
 $media-query-mobile: 600px;
@@ -967,9 +968,25 @@ div.mce-path { padding: 2px 10px; margin: 0; }
         .postuser {font-style:italic;}
     }
 }
+.carousel{ width:350px;height:250px;
+    .carousel-inner {width:100%;height:100% ;
+        .item { width:100%;height:100% ;
+            img { width:100%;height:100%; }
+        }
+    }
+}
 
-.carousel-inner {
-    .item { height:100%;
-          img { width:100%;height:100% }
+@media (min-width: $media-query-large){
+    .carousel{ width:420px;height:300px;
+    }
+}
+
+@media (max-width: $media-query-medium){
+    .carousel{ width:100%;padding-bottom: 65%;height:0;
+        .carousel-inner {width:100%;height:100%;position:absolute;left:0;right:0;top:0;bottom: 0;
+            .item { width:100%;height:100% ;
+                img { width:100%;height:100%; }
+            }
+        }
     }
 }
