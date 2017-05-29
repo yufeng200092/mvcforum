@@ -325,7 +325,7 @@ section.content-strip {
 
 .hottopics-box {
     ul { padding: 0; margin: 0;
-        li { padding: 3px 0; margin: 0; list-style: none;
+        li { padding: 3px 0; margin: 0; list-style: none; text-overflow: ellipsis;overflow: hidden;white-space: nowrap;
             .badge { background-color: #e4e3e3; font-weight: normal; }
         }
     }
