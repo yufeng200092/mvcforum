@@ -43,7 +43,7 @@
                         @Html.LanguageString("Category.MostRecent") <a href="@Model.LatestTopic.NiceUrl">@Html.Raw(Model.LatestTopic.Name)</a>
                         @Html.Raw(string.Format(Html.LanguageString("Topic.StartedBy"),
                             DatesUI.GetPrettyDate(Model.LatestTopic.CreateDate.ToString()),
-                            string.Format("<a href='{0}'>{1}</a>", Model.LatestTopic.User.NiceUrl, Model.LatestTopic.User.UserName)))
+                            string.Format("<a href='{0}'>{1}</a>", Model.LatestTopic.User.NiceUrl, Model.LatestTopic.User.Nickname)))
                     </text>
                 }
             </div>
