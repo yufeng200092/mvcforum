@@ -23,7 +23,7 @@
     color: #fff; }
 
 .navbar-brand {
-  padding-top: 5px;
+  padding-top: 8px;
   padding-bottom: 5px;
   height: auto;
   color: #fff;
@@ -1973,12 +1973,12 @@ div.mce-path {
 @media (min-width: 1200px) {
   .carousel {
     width: 420px;
-    height: 300px; } }
+    height: 250px; } }
 
 @media (max-width: 991px) {
   .carousel {
     width: 100%;
-    padding-bottom: 65%;
+    padding-bottom: 60%;
     height: 0; }
     .carousel .carousel-inner {
       width: 100%;
