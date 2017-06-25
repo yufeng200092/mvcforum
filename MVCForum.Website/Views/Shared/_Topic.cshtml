@@ -1,7 +1,7 @@
 ﻿@using MVCForum.Utilities
 @model MVCForum.Website.ViewModels.TopicViewModel
 @{
-    var postToolTip = string.Concat(StringUtils.ReturnAmountWordsFromString(StringUtils.StripHtmlFromString(Model.StarterPost.Post.PostContent), 50), "....");
+    var postToolTip = string.Concat(StringUtils.ReturnAmountWordsFromString(StringUtils.StripHtmlFromString(Model.StarterPost.Post.PostContent), 100), "....");
 }
 @if (!Model.Permissions[SiteConstants.Instance.PermissionDenyAccess].IsTicked)
 {

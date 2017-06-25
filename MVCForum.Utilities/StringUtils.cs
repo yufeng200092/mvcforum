@@ -358,28 +358,34 @@ namespace MVCForum.Utilities
                 return text;
             }
 
-            string tmpStr;
-            string[] stringArray;
-            var tmpStrReturn = "";
-            tmpStr = text.Replace("\t", " ").Trim();
-            tmpStr = tmpStr.Replace("\n", " ");
-            tmpStr = tmpStr.Replace("\r", " ");
+            //string tmpStr;
+            //string[] stringArray;
+            //var tmpStrReturn = "";
+            //tmpStr = text.Replace("\t", " ").Trim();
+            //tmpStr = tmpStr.Replace("\n", " ");
+            //tmpStr = tmpStr.Replace("\r", " ");
 
-            while (tmpStr.IndexOf("  ") != -1)
-            {
-                tmpStr = tmpStr.Replace("  ", " ");
-            }
-            stringArray = tmpStr.Split(' ');
+            //while (tmpStr.IndexOf("  ") != -1)
+            //{
+            //    tmpStr = tmpStr.Replace("  ", " ");
+            //}
+            //stringArray = tmpStr.Split(' ');
 
-            if (stringArray.Length < wordAmount)
+            //if (stringArray.Length < wordAmount)
+            //{
+            //    wordAmount = stringArray.Length;
+            //}
+            //for (int i = 0; i < wordAmount; i++)
+            //{
+            //    tmpStrReturn += stringArray[i] + " ";
+            //}
+            //return tmpStrReturn;
+
+            if (text.Length < wordAmount)
             {
-                wordAmount = stringArray.Length;
+                wordAmount = text.Length;
             }
-            for (int i = 0; i < wordAmount; i++)
-            {
-                tmpStrReturn += stringArray[i] + " ";
-            }
-            return tmpStrReturn;
+            return text.Substring(0, wordAmount);
         }
 
         /// <summary>
@@ -413,15 +419,15 @@ namespace MVCForum.Utilities
         {
             return new List<string>
                 {
-                    "the", "be",  "to",  
-                    "of",  
+                    "the", "be",  "to",
+                    "of",
                     "and",
                     "a",
-                    "in",   
-                    "that",  
+                    "in",
+                    "that",
                     "have",
                     "i",
-                    "it",   
+                    "it",
                     "for",
                     "not",
                     "on",
@@ -829,6 +835,7 @@ namespace MVCForum.Utilities
             {
                 input = Regex.Replace(input, @"</?\w+((\s+\w+(\s*=\s*(?:"".*?""|'.*?'|[^'"">\s]+))?)+\s*|\s*)/?>", string.Empty, RegexOptions.Singleline);
                 input = Regex.Replace(input, @"\[[^]]+\]", "");
+                input = input.Replace("&nbsp;", " ");
             }
             return input;
         }

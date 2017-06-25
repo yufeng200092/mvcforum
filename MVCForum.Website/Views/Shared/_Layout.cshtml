@@ -13,6 +13,7 @@
     if (ViewBag.MetaDesc == null) { ViewBag.MetaDesc = Html.Settings().MetaDesc; }
     if (ViewBag.Author == null) { ViewBag.Author = Html.Settings().Author; }
     if (ViewBag.Keywords == null) { ViewBag.Keywords = ViewBag.Title; }
+    ViewBag.Title = ViewBag.Title + " - " + Html.Settings().ForumName;
 }
 <!DOCTYPE html>
 <html lang="en">
