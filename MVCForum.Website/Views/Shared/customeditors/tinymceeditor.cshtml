@@ -9,7 +9,7 @@
             plugins: [
                 "autosave link image lists hr anchor forumimageinsert",
                 "wordcount visualblocks visualchars code fullscreen media nonbreaking",
-                "textcolor colorpicker codesample"
+                "textcolor colorpicker codesample paste"
             ],
             toolbar1: "bold italic underline strikethrough bullist hr | link unlink @(ViewBag.ImageUploadType ?? "image") code blockquote | " +
                 "@((ViewContext.RouteData.GetRequiredString("controller").ToLower() == "privatemessage")?"": "codesample | forecolor backcolor |" ) formatselect",
@@ -19,7 +19,7 @@
             toolbar_items_size: 'small',
             content_css: app_base + "content/tinymce.css",
             height: 175,
-            nonbreaking_force_tab: true,
+            nonbreaking_force_tab: 7,
             language: 'zh_CN',
             codesample_languages: [
                { text: 'HTML/XML', value: 'markup' },
