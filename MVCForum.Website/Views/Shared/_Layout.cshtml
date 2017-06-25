@@ -10,6 +10,9 @@
     TempData[AppConstants.GlobalClass] = Convert.ToBoolean(PageData[AppConstants.IsMobileDevice]) ? "mobile" : "desktop";
     TempData[AppConstants.CurrentAction] = ViewContext.RouteData.GetRequiredString("action").ToLower();
     TempData[AppConstants.CurrentController] = ViewContext.RouteData.GetRequiredString("controller").ToLower();
+    if (ViewBag.MetaDesc == null) { ViewBag.MetaDesc = Html.Settings().MetaDesc; }
+    if (ViewBag.Author == null) { ViewBag.Author = Html.Settings().Author; }
+    if (ViewBag.Keywords == null) { ViewBag.Keywords = ViewBag.Title; }
 }
 <!DOCTYPE html>
 <html lang="en">
@@ -42,12 +45,12 @@
 </head>
 
 <body class="@TempData[AppConstants.GlobalClass].ToString() loggedin-@(User.Identity.IsAuthenticated.ToString().ToLower())">
-    
+
     <nav class="pushy pushy-left">
         <ul>
             @if (User.Identity.IsAuthenticated)
             {
-                @Html.Action("SideAdminPanel", "Members", new { isDropDown  = false})
+                @Html.Action("SideAdminPanel", "Members", new { isDropDown = false })
             }
             else
             {
@@ -61,7 +64,7 @@
             @Html.Partial("SubNavigation")
         </ul>
     </nav>
-    <div class="site-overlay"></div>    
+    <div class="site-overlay"></div>
 
     <header>
 
@@ -75,12 +78,12 @@
                         <span class="icon-bar"></span>
                     </button>
                     <a class="navbar-brand" href="@Url.Action("Index", "Home")">
-                        <img src="@Url.Content(theme.ThemePath + "/content/images/logo.png")" alt="@Html.Lang("Site.MvcForum")" class="logoimg"/>                        
+                        <img src="@Url.Content(theme.ThemePath + "/content/images/logo.png")" alt="@Html.Lang("Site.MvcForum")" class="logoimg" />
                     </a>
                 </div>
 
                 <div class="collapse navbar-collapse" id="mvcforum-nav">
-    
+
                     <ul class="nav navbar-nav navbar-right">
                         @if (!User.Identity.IsAuthenticated)
                         {
@@ -89,7 +92,7 @@
                                 <li><a href="@Url.Action("Register", "Members")">@Html.LanguageString("Layout.Nav.Register")</a></li>
                             }
                             <li><a href="@Url.Action("LogOn", "Members")">@Html.LanguageString("Layout.Nav.Logon")</a></li>
-                        }                        
+                        }
                         @if (User.Identity.IsAuthenticated)
                         {
                             @Html.Action("SideAdminPanel", "Members", new { isDropDown = true })
@@ -160,6 +163,6 @@
     @if (!string.IsNullOrEmpty(Html.Settings().CustomFooterCode))
     {
         @Html.Raw(Html.Settings().CustomFooterCode)
-    }    
+    }
 </body>
 </html>

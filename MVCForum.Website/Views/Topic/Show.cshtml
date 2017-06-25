@@ -6,7 +6,10 @@
 @{
     Layout = "~/Views/Shared/_LayoutRightSideBar.cshtml";
     ViewBag.Title = Html.Raw(AppHelpers.CreatePageTitle(Model.Topic, Html.LanguageString("Topic.TitleFallBack")));
-    ViewBag.MetaDesc = StringUtils.ReturnAmountWordsFromString(string.Concat(StringUtils.StripHtmlFromString(Model.StarterPost.Post.PostContent), "..."), 20);
+    //ViewBag.MetaDesc = StringUtils.ReturnAmountWordsFromString(string.Concat(StringUtils.StripHtmlFromString(Model.StarterPost.Post.PostContent), "..."), 20);
+    ViewBag.MetaDesc = ViewBag.Title;
+    ViewBag.Keywords = String.Join(",", Model.Topic.Tags.Select(t => t.Tag));
+    ViewBag.Author = Model.Topic.User.Nickname;
 
     if (Request.QueryString.AllKeys.Any())
     {
@@ -87,7 +90,7 @@
             @if (Model.Topic.Poll != null)
             {
                 <li>
-                    <span class="glyphicon glyphicon-align-left" aria-hidden="true"></span> @Html.Lang("Topic.IsPoll") 
+                    <span class="glyphicon glyphicon-align-left" aria-hidden="true"></span> @Html.Lang("Topic.IsPoll")
                     @if (Model.Topic.Poll.IsClosed)
                     {
                         <text>(@Html.Lang("Topic.PollClosed"))</text>
@@ -158,7 +161,7 @@
 
         if (!Model.Permissions[SiteConstants.Instance.PermissionDenyAccess].IsTicked && !Model.Permissions[SiteConstants.Instance.PermissionReadOnly].IsTicked && !Model.Topic.Category.IsLocked)
         {
-            @Html.Partial("_CreateNewPost", new CreateAjaxPostViewModel { Topic = Model.Topic.Id, DisablePosting = Model.DisablePosting, PostContent = Model.QuotedPost, InReplyTo = Model.ReplyTo, ReplyToNickname = Model.ReplyToNickname})
+            @Html.Partial("_CreateNewPost", new CreateAjaxPostViewModel { Topic = Model.Topic.Id, DisablePosting = Model.DisablePosting, PostContent = Model.QuotedPost, InReplyTo = Model.ReplyTo, ReplyToNickname = Model.ReplyToNickname })
         }
         <a id="createpost"></a>
     }
