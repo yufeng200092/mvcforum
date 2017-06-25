@@ -686,6 +686,7 @@
                 // Flood control test
                 if (!_topicService.PassedTopicFloodTest(topicViewModel.Name, LoggedOnReadOnlyUser))
                 {
+                    ModelState.AddModelError(string.Empty, "你已经在2分钟内发布过该主题，请勿重复发布！");
                     // Failed test so don't post topic
                     return View(topicViewModel);
                 }
